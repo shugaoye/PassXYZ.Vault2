@@ -1,6 +1,8 @@
-﻿using KPCLib;
+﻿using Microsoft.Extensions.Logging;
+using PassXYZ.Vault.Services;
+using KPCLib;
 using PassXYZLib;
-using PassXYZ.Vault.Services; 
+
 namespace PassXYZ.Vault;
 
 public static class MauiProgram
@@ -22,6 +24,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<IDataStore<Item>, DataStore>();
         builder.Services.AddSingleton<IUserService<User>, UserService>();
         builder.Services.AddSingleton<LoginUser, LoginUser>();
+
+#if DEBUG
+        builder.Logging.AddDebug();
+#endif
 
         return builder.Build();
 	}
