@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <UseMaui>true</UseMaui>
+    <MauiVersion>8.0.10</MauiVersion>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
