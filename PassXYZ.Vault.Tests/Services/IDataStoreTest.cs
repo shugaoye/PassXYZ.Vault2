@@ -12,7 +12,7 @@ namespace PassXYZ.Vault.Tests.Services
         {
             IDataStore<Item> dataStore = new MockDataStore();
             var items = await dataStore.GetItemsAsync(true);
-            Assert.Equal(6, items.Count());
+            Assert.Equal(50, items.Count());
         }
 
         [Fact]

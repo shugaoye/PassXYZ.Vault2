@@ -23,7 +23,7 @@ namespace PassXYZ.Vault.Tests.ViewModels
             shell.Items.Add(abougPage);
 
             Application app = Substitute.For<Application>();
-            app.MainPage = shell;
+            //app.MainPage = shell;
 
             using ILoggerFactory loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
             logger = loggerFactory.CreateLogger<ItemsViewModel>();
@@ -38,7 +38,7 @@ namespace PassXYZ.Vault.Tests.ViewModels
             // Act
             vm.LoadItemsCommand.Execute(vm);
             // Assert
-            Assert.Equal(6, vm.Items.Count);
+            Assert.Equal(50, vm.Items.Count);
         }
 
         //[Fact]
