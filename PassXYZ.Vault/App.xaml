@@ -9,6 +9,18 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Label" x:Key="Key">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+            </Style>
+            <Style TargetType="Label" x:Key="Value">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

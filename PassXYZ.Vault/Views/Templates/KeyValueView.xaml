@@ -31,14 +31,14 @@
                Grid.Column="1"
                LineBreakMode="NoWrap" 
                MaxLines="1"
-               Style="{DynamicResource ListItemTextStyle}"
+               Style="{DynamicResource Key}"
                FontAttributes="Bold"
                FontSize="Small" />
         <Label x:Name="valueField" Text=""
                Grid.Row="1" Grid.Column="1"
                LineBreakMode="TailTruncation"
                MaxLines="1"
-               Style="{DynamicResource ListItemDetailTextStyle}"
+               Style="{DynamicResource Value}"
                FontSize="Small" />
         <Grid.GestureRecognizers>
             <TapGestureRecognizer 
