@@ -216,11 +216,11 @@
   <data name="action_id_delete" xml:space="preserve">
     <value>刪除</value>
   </data>
-  <data name="alert_id_no" xml:space="preserve">
-    <value>否</value>
-  </data>
   <data name="alert_id_remove" xml:space="preserve">
     <value>請確認刪除</value>
+  </data>
+  <data name="alert_id_no" xml:space="preserve">
+    <value>否</value>
   </data>
   <data name="alert_id_yes" xml:space="preserve">
     <value>是</value>
@@ -739,11 +739,11 @@
   <data name="field_id_hotline" xml:space="preserve">
     <value>客服熱線</value>
   </data>
-  <data name="field_id_payment_password" xml:space="preserve">
-    <value>支付密碼</value>
-  </data>
   <data name="field_id_trading_pin" xml:space="preserve">
     <value>交易密碼</value>
+  </data>
+  <data name="field_id_payment_password" xml:space="preserve">
+    <value>支付密碼</value>
   </data>
   <data name="message_id_alert_saving" xml:space="preserve">
     <value>您需要保存更改的內容嗎？</value>
@@ -1029,5 +1029,8 @@ PassXYZ應用幫助存儲您的個人數據在本地設備並使用KeePass 加�
   </data>
   <data name="menu_id_data_recovery" xml:space="preserve">
     <value>數據恢復</value>
+  </data>
+  <data name="message_id_alert_deleting" xml:space="preserve">
+    <value>妳想刪除</value>
   </data>
 </root>

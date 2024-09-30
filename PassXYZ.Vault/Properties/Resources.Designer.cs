@@ -1899,6 +1899,15 @@ namespace PassXYZ.Vault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to delete.
+        /// </summary>
+        internal static string message_id_alert_deleting {
+            get {
+                return ResourceManager.GetString("message_id_alert_deleting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot logout now, .
         /// </summary>
         internal static string message_id_alert_logout_disable {

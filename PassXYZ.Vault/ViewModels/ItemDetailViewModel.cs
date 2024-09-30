@@ -156,15 +156,21 @@ public partial class ItemDetailViewModel : BaseViewModel
         {
             throw new ArgumentNullException(nameof(field));
         }
+        var question = Properties.Resources.action_id_delete + " " + field.Key + "!";
+        var message = Properties.Resources.message_id_alert_deleting + " " + field.Key + "?";
+        bool answer = await Shell.Current.DisplayAlert(question, message, Properties.Resources.alert_id_yes, Properties.Resources.alert_id_no);
 
-        if (Fields.Remove(field) && _item != null)
+        if (answer) 
         {
-            _item.DeleteField(field);
-            await dataStore.UpdateItemAsync(_item);
-        }
-        else
-        {
-            throw new NullReferenceException("Item is null or field cannot be found");
+            if (Fields.Remove(field) && _item != null)
+            {
+                _item.DeleteField(field);
+                await dataStore.UpdateItemAsync(_item);
+            }
+            else
+            {
+                throw new NullReferenceException("Item is null or field cannot be found");
+            }
         }
     }
 
