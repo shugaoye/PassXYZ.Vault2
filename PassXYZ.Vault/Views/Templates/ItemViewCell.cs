@@ -11,6 +11,7 @@ namespace PassXYZ.Vault.Views.Templates
         {
             SetContextAction(GetEditMenu(), OnEditAction);
             SetContextAction(GetDeleteMenu(), OnDeleteAction);
+            SetContextAction(GetChangeIconMenu(), OnChangeIconAction);
         }
 
         private void OnEditAction(object? sender, System.EventArgs e)
@@ -35,6 +36,19 @@ namespace PassXYZ.Vault.Views.Templates
                 {
                     Debug.WriteLine($"ItemViewCell: delete action on {item.Name}");
                     await vm.Delete(item);
+                }
+            }
+        }
+
+        private void OnChangeIconAction(object? sender, System.EventArgs e)
+        {
+            if (sender is MenuItem menuItem)
+            {
+                if (menuItem.CommandParameter is Item item &&
+                    ParentPage.BindingContext is ItemsViewModel vm)
+                {
+                    Debug.WriteLine($"ItemViewCell: change icon action on {item.Name}");
+                    vm.UpdateIcon(item);
                 }
             }
         }

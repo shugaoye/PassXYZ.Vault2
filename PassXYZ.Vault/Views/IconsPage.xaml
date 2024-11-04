@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resources="clr-namespace:PassXYZ.Vault.Properties"
+             xmlns:styles="clr-namespace:PassXYZ.Vault.Resources.Styles"
+             x:Class="PassXYZ.Vault.Views.IconsPage"
+             Title="Icons">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{x:Static resources:Resources.action_id_cancel}" Clicked="OnCancelClicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="FontAwesomeRegular"
+			        Glyph="{x:Static styles:FontAwesomeRegular.WindowClose}"
+			        Color="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Secondary}}"
+			        Size="16" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem Text="{x:Static resources:Resources.action_id_save}" Clicked="OnSaveClicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="FontAwesomeRegular"
+			        Glyph="{x:Static styles:FontAwesomeRegular.Save}"
+			        Color="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Secondary}}"
+			        Size="16" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="Auto,*">
+        <Label x:Name="selectedIcon" Text="Please select a icon"
+               HorizontalTextAlignment="Center"
+               Margin="10"
+               Grid.Row="0" />
+
+        <ScrollView Grid.Row="1">
+            <FlexLayout x:Name="flexLayout"
+                        Wrap="Wrap" JustifyContent="SpaceAround" />
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

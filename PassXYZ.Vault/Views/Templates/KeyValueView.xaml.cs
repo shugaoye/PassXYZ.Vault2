@@ -174,4 +174,19 @@ public partial class KeyValueView : ViewCell
             }
         };
     }
+
+    protected static MenuItem GetChangeIconMenu()
+    {
+        return new MenuItem
+        {
+            Text = Properties.Resources.action_id_change_icon,
+            IconImageSource = new FontImageSource
+            {
+                Glyph = FontAwesomeRegular.Images,
+                FontFamily = "FontAwesomeRegular",
+                Color = Colors.Black,
+                Size = 32
+            }
+        };
+    }
 }

@@ -128,6 +128,24 @@ namespace PassXYZ.Vault.ViewModels
         }
 
         /// <summary>
+        /// Update the icon of an item. The item can be a group or an entry.
+        /// </summary>
+        /// <param name="item">an instance of Item</param>
+        public async void UpdateIcon(Item item) 
+        {
+            if (item == null)
+            {
+                return;
+            }
+
+            await Shell.Current.Navigation.PushAsync(new IconsPage(async (PxFontIcon icon) => {
+                item.SetFontIcon(icon);
+                await dataStore.UpdateItemAsync(item);
+            }));
+        }
+
+
+        /// <summary>
         /// Update an item. The item can be a group or an entry.
         /// </summary>
         /// <param name="item">an instance of Item</param>
