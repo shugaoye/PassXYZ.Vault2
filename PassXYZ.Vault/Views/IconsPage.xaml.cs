@@ -9,18 +9,42 @@ public partial class IconsPage : ContentPage
 {
     Dictionary<string, string> glyphs;
     private Action<PxFontIcon> updateIcon;
-    PxFontIcon selectedFontIcon = new PxFontIcon { FontFamily = "FontAwesomeBrands", Glyph = FontAwesomeBrands.FontAwesomeAlt };
+    Type selectedFontFamilyType = FontData.FontFamily[nameof(FontType.FontAwesomeBrands)];
+    PxFontIcon selectedFontIcon = new PxFontIcon { FontFamily = nameof(FontType.FontAwesomeBrands), Glyph = FontAwesomeBrands.FontAwesomeAlt };
+    FontImageSource? selectedFontImageSource = default;
 
     public IconsPage()
 	{
 		InitializeComponent();
         LoadIcons();
         Debug.WriteLine("Loading icons ...");
+        this.BindingContext = this;
     }
 
     public IconsPage(Action<PxFontIcon> callback) : this()
     {
         this.updateIcon = callback;
+    }
+
+    List<string> fontFamilyNames = FontData.FontFamily.Keys.ToList();
+    public List<string> FontFamilyNames { get => fontFamilyNames; }
+
+    string selectedFontFamilyName = nameof(FontType.FontAwesomeBrands);
+    public string SelectedFontFamilyName
+    {
+        get => selectedFontFamilyName;
+        set
+        {
+            if (selectedFontFamilyName != value)
+            {
+                selectedFontFamilyName = value;
+                selectedFontFamilyType = FontData.FontFamily[value];
+                //glyphs = FontData.GetGlyphs(selectedFontFamilyType);
+                flexLayout.Children.Clear();
+                LoadIcons();
+                OnPropertyChanged();
+            }
+        }
     }
 
     void OnImageButtonClicked(object? sender, EventArgs e)
@@ -30,7 +54,13 @@ public partial class IconsPage : ContentPage
             var glyph = glyphs.FirstOrDefault(x => x.Value == fontImageSource.Glyph);
             Debug.WriteLine($"ImageButton clicked with Glyph: {glyph.Key}");
             selectedIcon.Text = $"The selected icon is {glyph.Key}.";
-            selectedFontIcon = new PxFontIcon { FontFamily = "FontAwesomeBrands", Glyph = glyph.Value };
+            selectedFontIcon = new PxFontIcon { FontFamily = selectedFontFamilyName, Glyph = glyph.Value };
+            if(selectedFontImageSource != null) 
+            {
+                selectedFontImageSource.Color = Microsoft.Maui.Graphics.Colors.Black;
+            }
+            selectedFontImageSource = fontImageSource;
+            fontImageSource.Color = (Color)Application.Current.Resources["Primary"];
         }
         else
         {
@@ -40,7 +70,7 @@ public partial class IconsPage : ContentPage
 
     async Task LoadIcons()
     {
-        glyphs = FontData.GetGlyphs(typeof(FontAwesomeBrands));
+        glyphs = FontData.GetGlyphs(selectedFontFamilyType);
 
         await Task.Run(async () =>
         {
@@ -51,7 +81,7 @@ public partial class IconsPage : ContentPage
                 {
                     Source = new FontImageSource
                     {
-                        FontFamily = "FontAwesomeBrands",
+                        FontFamily = selectedFontFamilyName,
                         Glyph = glyph.Value,
                         Size = 32,
                         Color = Microsoft.Maui.Graphics.Colors.Black

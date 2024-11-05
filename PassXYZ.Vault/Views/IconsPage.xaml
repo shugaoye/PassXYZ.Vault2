@@ -26,10 +26,15 @@
     </ContentPage.ToolbarItems>
 
     <Grid RowDefinitions="Auto,*">
-        <Label x:Name="selectedIcon" Text="Please select a icon"
+        <HorizontalStackLayout Margin="20" Grid.Row="0">
+            <Picker ItemsSource="{Binding FontFamilyNames}" SelectedItem="{Binding SelectedFontFamilyName}" />
+
+            <Label x:Name="selectedIcon" Text="Please select a icon"
                HorizontalTextAlignment="Center"
                Margin="10"
-               Grid.Row="0" />
+                />
+
+        </HorizontalStackLayout>
 
         <ScrollView Grid.Row="1">
             <FlexLayout x:Name="flexLayout"
