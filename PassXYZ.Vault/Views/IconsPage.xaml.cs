@@ -54,6 +54,7 @@ public partial class IconsPage : ContentPage
             var glyph = glyphs.FirstOrDefault(x => x.Value == fontImageSource.Glyph);
             Debug.WriteLine($"ImageButton clicked with Glyph: {glyph.Key}");
             selectedIcon.Text = $"The selected icon is {glyph.Key}.";
+            // searchBar.Text = glyph.Key;
             selectedFontIcon = new PxFontIcon { FontFamily = selectedFontFamilyName, Glyph = glyph.Value };
             if(selectedFontImageSource != null) 
             {
@@ -68,9 +69,13 @@ public partial class IconsPage : ContentPage
         }
     }
 
-    async Task LoadIcons()
+    async Task LoadIcons(string keyword = "")
     {
         glyphs = FontData.GetGlyphs(selectedFontFamilyType);
+        if (!string.IsNullOrEmpty(keyword))
+        {
+            glyphs = glyphs.Where(x => x.Key.Contains(keyword)).OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
+        }
 
         await Task.Run(async () =>
         {
@@ -116,5 +121,12 @@ public partial class IconsPage : ContentPage
     {
         updateIcon?.Invoke(selectedFontIcon);
         _ = await Shell.Current.Navigation.PopAsync();
+    }
+
+    void OnSearchButtonPressed(object sender, EventArgs e)
+    {
+        SearchBar searchBar = (SearchBar)sender;
+        flexLayout.Children.Clear();
+        LoadIcons(searchBar.Text);
     }
 }

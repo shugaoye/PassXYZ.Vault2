@@ -25,18 +25,18 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
 
-    <Grid RowDefinitions="Auto,*">
-        <HorizontalStackLayout Margin="20" Grid.Row="0">
-            <Picker ItemsSource="{Binding FontFamilyNames}" SelectedItem="{Binding SelectedFontFamilyName}" />
+    <Grid RowDefinitions="Auto,Auto,*">
+        <Label x:Name="selectedIcon" Text="Please select a icon"
+               HorizontalTextAlignment="Start"
+               Margin="20"  Grid.Row="0"/>
 
-            <Label x:Name="selectedIcon" Text="Please select a icon"
-               HorizontalTextAlignment="Center"
-               Margin="10"
-                />
+        <Picker Margin="20" ItemsSource="{Binding FontFamilyNames}" SelectedItem="{Binding SelectedFontFamilyName}" 
+                    HorizontalOptions="StartAndExpand" Grid.Row="1" />
 
-        </HorizontalStackLayout>
-
-        <ScrollView Grid.Row="1">
+        <SearchBar Margin="20" x:Name="searchBar" SearchButtonPressed="OnSearchButtonPressed" 
+                       WidthRequest="200" HorizontalOptions="EndAndExpand" Grid.Row="1" />
+        
+        <ScrollView Grid.Row="2">
             <FlexLayout x:Name="flexLayout"
                         Wrap="Wrap" JustifyContent="SpaceAround" />
         </ScrollView>
