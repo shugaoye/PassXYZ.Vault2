@@ -26,7 +26,7 @@
     </ContentPage.ToolbarItems>
 
     <Grid RowDefinitions="Auto,Auto,*">
-        <Label x:Name="selectedIcon" Text="Please select a icon"
+        <Label x:Name="selectedIcon" Text="{x:Static resources:Resources.message_id_select_icon}"
                HorizontalTextAlignment="Start"
                Margin="20"  Grid.Row="0"/>
 

@@ -2073,6 +2073,24 @@ namespace PassXYZ.Vault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select a icon.
+        /// </summary>
+        internal static string message_id_select_icon {
+            get {
+                return ResourceManager.GetString("message_id_select_icon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selected icon is .
+        /// </summary>
+        internal static string message_id_selected_icon {
+            get {
+                return ResourceManager.GetString("message_id_selected_icon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot synchronize file.
         /// </summary>
         internal static string message_id_sync_failure {

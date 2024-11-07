@@ -1033,4 +1033,10 @@ PassXYZ應用幫助存儲您的個人數據在本地設備並使用KeePass 加�
   <data name="message_id_alert_deleting" xml:space="preserve">
     <value>妳想刪除</value>
   </data>
+  <data name="message_id_select_icon" xml:space="preserve">
+    <value>請選擇一個圖標</value>
+  </data>
+  <data name="message_id_selected_icon" xml:space="preserve">
+    <value>選擇的圖標是</value>
+  </data>
 </root>

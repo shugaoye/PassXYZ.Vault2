@@ -53,7 +53,7 @@ public partial class IconsPage : ContentPage
         {
             var glyph = glyphs.FirstOrDefault(x => x.Value == fontImageSource.Glyph);
             Debug.WriteLine($"ImageButton clicked with Glyph: {glyph.Key}");
-            selectedIcon.Text = $"The selected icon is {glyph.Key}.";
+            selectedIcon.Text = $"{Properties.Resources.message_id_selected_icon}{glyph.Key}.";
             // searchBar.Text = glyph.Key;
             selectedFontIcon = new PxFontIcon { FontFamily = selectedFontFamilyName, Glyph = glyph.Value };
             if(selectedFontImageSource != null) 
