@@ -35,6 +35,7 @@
         <ListView x:Name="FieldsListView" 
                       ItemsSource="{Binding Fields}"
                       VerticalOptions="FillAndExpand"
+                      ItemTapped="OnTap"
                       HasUnevenRows="True">
 
             <ListView.ItemTemplate>

@@ -99,6 +99,28 @@ public partial class ItemDetailViewModel : BaseViewModel
         }
     }
 
+    public async void OnFieldSelected(Field field)
+    {
+        if (field == null)
+        {
+            logger.LogWarning("field is null in OnSelection");
+            return;
+        }
+
+        if (field.IsBinaries)
+        {
+            var bdc = BinaryDataClassifier.ClassifyUrl(field.Key);
+            if ((bdc == BinaryDataClass.Image) && (field.Binary != null))
+            {
+                await Shell.Current.Navigation.PushAsync(new ImagePreviewPage(field.GetBinaryData()));
+            }
+            else
+            {
+                logger.LogDebug("Attachment {field.Key} selected", field.Key);
+            }
+        }
+    }
+
     public void LoadItemId(string itemId)
     {
         if (itemId == null) { throw new ArgumentNullException(nameof(itemId)); }
